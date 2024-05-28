@@ -1,0 +1,18 @@
+receivers:
+  smartagent/sql:
+    type: sql
+    intervalSeconds: 3600
+    dbDriver: snowflake
+    params:
+      account: "hogehoge"
+      database: "hogehoge"
+      warehouse: "hogehoge"
+      user: "hogehoge"
+      password: "hogehoge"
+    connectionString: "{{.user}}:{{.password}}@{{.account}}/{{.database}}?warehouse={{.warehouse}}"
+    queries:
+      - query: 'select A, B, C from hoge;'
+        metrics:
+          - metricName: "hoge"
+            valueColumn: "A"
+            dimensionColumns: ["B", "C"]
