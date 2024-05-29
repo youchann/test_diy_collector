@@ -138,7 +138,7 @@ func sendToSplunk(rows []map[string]interface{}, metrics []Metric) {
 				Metric:     metric.MetricName,
 				Value:      value,
 				Dimensions: dimensions,
-				Timestamp:  getValue[time.Time](row, "EVENT_AT").Unix(),
+				Timestamp:  getValue[time.Time](row, "EVENT_AT").UnixMilli(),
 			})
 		}
 	}
